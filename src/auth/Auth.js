@@ -22,7 +22,7 @@ export default class auth extends Component {
     const { onUser, history } = this.props;
 
     this.setState({ error: '' });
-    
+
     try {
       const action = isSignUp ? signUp : logIn;
       const user = await action(this.state);
@@ -52,35 +52,42 @@ export default class auth extends Component {
     const { isSignUp, name, email, password, error } = this.state;
 
     return (
-      <form className="auth">
-        <p>
-          <label>
-            <span>Name</span>
-            <input name="name" value={name} required></input>
-          </label>
-        </p>
+      <form className="auth" onSubmit={this.handleSubmit}>
+        {isSignUp &&
+          <p>
+            <label>
+              <span>Name</span>
+              <input name="name" value={name} required onChange={this.handleNameChange}></input>
+            </label>
+          </p>}
 
         <p>
           <label>
             <span>Email</span>
-            <input name="email" value={email} required></input>
+            <input name="email" value={email} required onChange={this.handleEmailChange}></input>
           </label>
         </p>
 
         <p>
           <label>
             <span>Password</span>
-            <input name="password" value={password} required type="password"></input>
+            <input name="password" value={password} required type="password" onChange={this.handlePasswordChange}></input>
           </label>
         </p>
 
         <p>
-          <button type="submit">Log In</button>
+          <button type="submit">{isSignUp ? 'Sign Up' : 'Log In'}</button>
         </p>
 
         <p>
-          <button>Who Dat?</button>
+          <button type="button" className="switch" onClick={this.handleSwitch}>
+            {isSignUp
+              ? 'Already have an account?'
+              : 'Need to create an account?'
+            }
+          </button>
         </p>
+        {error && <p>{error}</p>}
       </form>
     );
   }
