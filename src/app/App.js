@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Home from '../home/Home';
+import Auth from '../auth/Auth';
 import {
   BrowserRouter as Router,
   Route,
@@ -40,7 +41,7 @@ class App extends Component {
 
               <Route path='/auth' exact={true}
                 render={routerProps => (
-                  <div>Auth Page</div>
+                  <Auth {...routerProps} />
                 )}
               />
 
