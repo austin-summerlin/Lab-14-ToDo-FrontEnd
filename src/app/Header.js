@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <h1>Todos</h1>
+        <h1><NavLink to="/">To Do Home</NavLink></h1>
 
         <NavLink to="/todos">Todo</NavLink>
 

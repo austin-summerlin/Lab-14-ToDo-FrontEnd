@@ -12,7 +12,7 @@ export default class auth extends Component {
   }
 
   handleSwitch = () => {
-    this.setState({ isSignUp: !this.state.signUp });
+    this.setState({ isSignUp: !this.state.isSignUp });
   }
 
   handleSubmit = async e => {
