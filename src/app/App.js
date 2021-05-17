@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from '../home/Home';
 import Auth from '../auth/Auth';
+import TodosPage from '../todos/TodosPage';
 import {
   BrowserRouter as Router,
   Route,
@@ -46,7 +47,7 @@ class App extends Component {
               <Route path="/todos" exact={true}
                 render={routerProps => (
                   token
-                    ? <div>Todos go Here</div>
+                    ? <TodosPage {...routerProps} />
                     : <Redirect to="/auth" />
                 )}
               />
