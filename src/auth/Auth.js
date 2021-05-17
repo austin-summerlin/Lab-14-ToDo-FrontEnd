@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { signUp, logIn } from '../utils/todo-api.js';
 import './Auth.css';
 
 export default class auth extends Component {
@@ -8,6 +9,43 @@ export default class auth extends Component {
     email: '',
     password: '',
     error: ''
+  }
+
+  handleSwitch = () => {
+    this.setState({ isSignUp: !this.state.signUp });
+  }
+
+  handleSubmit = async e => {
+    e.preventDefault();
+
+    const { isSignUp } = this.state;
+    const { onUser, history } = this.props;
+
+    this.setState({ error: '' });
+    
+    try {
+      const action = isSignUp ? signUp : logIn;
+      const user = await action(this.state);
+
+      onUser(user);
+
+      history.push('/');
+    }
+    catch (err) {
+      this.setState({ error: err.error });
+    }
+  }
+
+  handleNameChange = ({ target }) => {
+    this.setState({ name: target.value });
+  }
+
+  handleEmailChange = ({ target }) => {
+    this.setState({ email: target.value });
+  }
+
+  handlePasswordChange = ({ target }) => {
+    this.setState({ password: target.value });
   }
 
   render() {
@@ -32,12 +70,12 @@ export default class auth extends Component {
         <p>
           <label>
             <span>Password</span>
-            <input name="password" value={password} required></input>
+            <input name="password" value={password} required type="password"></input>
           </label>
         </p>
 
         <p>
-          <button type="submit"></button>
+          <button type="submit">Log In</button>
         </p>
 
         <p>

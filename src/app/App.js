@@ -27,6 +27,12 @@ class App extends Component {
                 )}
               />
 
+              <Route path='/auth' exact={true}
+                render={routerProps => (
+                  <Auth {...routerProps} />
+                )}
+              />
+
               <Route path="/resources" exact={true}
                 render={routerProps => (
                   <div>Implement a page of resources</div>
@@ -36,12 +42,6 @@ class App extends Component {
               <Route path="/resources/:id"
                 render={routerProps => (
                   <div>Implement a page for id {routerProps.match.params.id}</div>
-                )}
-              />
-
-              <Route path='/auth' exact={true}
-                render={routerProps => (
-                  <Auth {...routerProps} />
                 )}
               />
 
