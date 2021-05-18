@@ -1,3 +1,38 @@
-.TodosPage input:checked ~ h2 {
+.TodosPage input:checked ~ h3 {
   text-decoration: line-through;
+}
+
+.TodosPage input[type=checkbox] {
+  visibility: hidden;
+}
+
+.TodosPage {
+  margin: 60px auto;
+  width: 400px;
+}
+
+.TodosPage button {
+  height: fit-content;
+  align-self: center;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.TodosPage li {
+  display: grid;
+  grid-template-columns: auto 100px;
+}
+
+.add-task {
+  padding: 5px;
+  font-size: 1.5rem;
+  margin: 10px 0;
 }

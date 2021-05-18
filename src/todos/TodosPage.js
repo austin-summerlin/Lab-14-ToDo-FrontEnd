@@ -75,8 +75,8 @@ export default class TodosPage extends Component {
     return (
       <div className="TodosPage">
         <form onSubmit={this.handleAdd}>
-          Add a new task...
-          <input value={task} onChange={this.handleTaskChange} />
+          <h2>Add a new task...</h2>
+          <input value={task} className='add-task' onChange={this.handleTaskChange} />
         </form>
         <ul>
           {todos.map(todo => (
@@ -84,9 +84,9 @@ export default class TodosPage extends Component {
               <label>
                 {/* when input checkbox is selected, it calls {() => this.handleUpdate(todo)} */}
                 <input type="checkbox" checked={todo.completed} onClick={() => this.handleUpdate(todo)} />
-                <h2>{todo.task}</h2>
+                <h3>{todo.task}</h3>
               </label>
-              <button className='delete' onClick={() => this.handleDelete(todo.id)}>Get outa here!</button>
+              <button className='delete' onClick={() => this.handleDelete(todo.id)}><i class="fas fa-trash-alt"></i></button>
             </li>
           ))}
         </ul>
