@@ -16,13 +16,13 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Header/>
+          <Header />
           <main>
 
             <Switch>
               <Route path="/" exact={true}
                 render={routerProps => (
-                  <Home {...routerProps}/>
+                  <Home {...routerProps} />
                 )}
               />
 
@@ -38,11 +38,19 @@ class App extends Component {
                 )}
               />
 
+              <Route path='/auth' exact={true}
+                render={routerProps => (
+                  <div>Auth Page</div>
+                )}
+              />
+
+
+
               <Redirect to="/" />
 
             </Switch>
           </main>
-          <Footer/>
+          <Footer />
         </Router>
       </div>
     );
