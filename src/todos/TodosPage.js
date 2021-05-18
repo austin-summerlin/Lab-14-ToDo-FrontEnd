@@ -23,7 +23,7 @@ export default class TodosPage extends Component {
     const { task, todos } = this.state;
 
     try {
-      const addedTask = await addTodo({ name: task });
+      const addedTask = await addTodo({ task: task });
       const updatedTodo = [...todos, addedTask];
       this.setState({
         todos: updatedTodo,
