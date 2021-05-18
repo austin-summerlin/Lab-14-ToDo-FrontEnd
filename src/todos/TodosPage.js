@@ -83,11 +83,9 @@ export default class TodosPage extends Component {
             <li key={todo.id}>
               <label>
                 {/* when input checkbox is selected, it calls {() => this.handleUpdate(todo)} */}
-                { todo.completed ? <input type="checkbox" checked onClick={() => this.handleUpdate(todo)} /> : <input type="checkbox" onClick={() => this.handleUpdate(todo)} />}
-                
+                <input type="checkbox" checked={todo.completed} onClick={() => this.handleUpdate(todo)} />
                 <h2>{todo.task}</h2>
               </label>
-              {/* <button className='complete' onClick={() => this.handleUpdate(todo)}>Done-zo</button> */}
               <button className='delete' onClick={() => this.handleDelete(todo.id)}>Get outa here!</button>
             </li>
           ))}

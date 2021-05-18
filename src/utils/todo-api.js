@@ -63,9 +63,5 @@ export async function updateTodo(todo) {
     .send(todo)
     .set('Authorization', window.localStorage.getItem('TOKEN'));
 
-
   return response.body;
-
 }
-
-
