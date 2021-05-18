@@ -1,0 +1,3 @@
+.TodosPage input:checked ~ h2 {
+  text-decoration: line-through;
+}

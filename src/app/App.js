@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Home from '../home/Home';
 import Auth from '../auth/Auth';
 import TodosPage from '../todos/TodosPage';
 import {
@@ -33,7 +32,9 @@ class App extends Component {
             <Switch>
               <Route path="/" exact={true}
                 render={routerProps => (
-                  <Home {...routerProps} />
+                  token
+                    ? <TodosPage {...routerProps} />
+                    : <Redirect to="/auth" />
                 )}
               />
 
