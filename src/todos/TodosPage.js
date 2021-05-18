@@ -68,9 +68,23 @@ export default class TodosPage extends Component {
   }
 
   render() {
+    const { task, todos } = this.state;
+
     return (
       <div className="TodosPage">
-
+        <form onSubmit={this.handleAdd}>
+          Add a new task...
+          <input value={task} onChange={this.handleTaskChange} />
+        </form>
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id}>
+              <h2>{todo.task}</h2>
+              <button className='complete' onClick={() => this.handleUpdate(todo.id)}>Done-zo</button>
+              <button className='delete' onClick={() => this.handleDelete(todo.id)}>Get outa here!</button>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
