@@ -75,19 +75,19 @@ export default class auth extends Component {
           </label>
         </p>
 
-        <p>
+        <p className="buttons">
           <button type="submit">{isSignUp ? 'Sign Up' : 'Log In'}</button>
         </p>
 
-        <p>
-          <button type="button" className="switch" onClick={this.handleSwitch}>
+        <p className="buttons">
+          <div type="button" className="switch" onClick={this.handleSwitch}>
             {isSignUp
               ? 'Already have an account?'
               : 'Need to create an account?'
             }
-          </button>
+          </div>
         </p>
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
       </form>
     );
   }
