@@ -55,13 +55,13 @@ export default class TodosPage extends Component {
     }
   }
 
-  handleUpdate = async id => {
+  handleUpdate = async todo => {
     const { todos } = this.state;
 
     try {
-      const updatedTodo = await updateTodo(id);
+      const updatedTodo = await updateTodo(todo);
 
-      const updatedTodos = todos.map(todo => todo.id === id ? updatedTodo : todo);
+      const updatedTodos = todos.map(todo => todo.id === updatedTodo.id ? updatedTodo : todo);
       this.setState({ todos: updatedTodos });
     }
     catch (err) {
@@ -82,7 +82,7 @@ export default class TodosPage extends Component {
           {todos.map(todo => (
             <li key={todo.id}>
               <h2>{todo.task}</h2>
-              <button className='complete' onClick={() => this.handleUpdate(todo.id)}>Done-zo</button>
+              <button className='complete' onClick={() => this.handleUpdate(todo)}>Done-zo</button>
               <button className='delete' onClick={() => this.handleDelete(todo.id)}>Get outa here!</button>
             </li>
           ))}

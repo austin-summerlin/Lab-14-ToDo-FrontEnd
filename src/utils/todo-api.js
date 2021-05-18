@@ -56,12 +56,13 @@ export async function deleteTodo(id) {
   return response.body;
 }
 
-export async function updateTodo(id) {
-
+export async function updateTodo(todo) {
+  todo.completed = !todo.completed;
   const response = await request
-    .put(`/api/todos/${id}/completed`)
-    .set('Authorization', window.localStorage.getItem('TOKEN'))
-    .send({ completed: true });
+    .put(`/api/todos/${todo.id}/completed`)
+    .send(todo)
+    .set('Authorization', window.localStorage.getItem('TOKEN'));
+
 
   return response.body;
 
