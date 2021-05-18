@@ -26,11 +26,11 @@ export async function logIn(credentials) {
   return response.body;
 }
 
-export async function addTodo(credentials){
+export async function addTodo(todo) {
   const response = await request
     .post('/api/todos')
     .set('Authorization', window.localStorage.getItem('TOKEN'))
-    .send(credentials);
+    .send(todo);
 
   if (response.status === 400) {
     throw response.body;
@@ -40,7 +40,7 @@ export async function addTodo(credentials){
 
 }
 
-export async function getTodo(){
+export async function getTodo() {
   const response = await request
     .get('/api/me/todos')
     .set('Authorization', window.localStorage.getItem('TOKEN'));
@@ -48,7 +48,7 @@ export async function getTodo(){
   return response.body;
 }
 
-export async function deleteTodo(){
+export async function deleteTodo() {
   const response = await request
     .delete('/api/todos/:id')
     .set('Authorization', window.localStorage.getItem('TOKEN'));
@@ -57,7 +57,7 @@ export async function deleteTodo(){
 }
 
 export async function updateTodo(id) {
-  
+
   const response = await request
     .put(`/api/todos/${id}/completed`)
     .set('Authorization', window.localStorage.getItem('TOKEN'));
