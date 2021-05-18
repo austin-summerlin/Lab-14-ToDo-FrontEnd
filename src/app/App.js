@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Home from '../home/Home';
+import Auth from '../auth/Auth';
+import TodosPage from '../todos/TodosPage';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,8 +12,17 @@ import {
 import './App.css';
 
 class App extends Component {
+  state = {
+    token: window.localStorage.getItem('TOKEN')
+  }
+
+  handleUser = user => {
+    window.localStorage.setItem('TOKEN', user.token);
+    this.setState({ token: user.token });
+  }
 
   render() {
+    const { token } = this.state;
     return (
       <div className="App">
         <Router>
@@ -22,25 +32,30 @@ class App extends Component {
             <Switch>
               <Route path="/" exact={true}
                 render={routerProps => (
-                  <Home {...routerProps} />
+                  token
+                    ? <TodosPage {...routerProps} />
+                    : <Redirect to="/auth" />
                 )}
               />
 
-              <Route path="/resources" exact={true}
+              <Route path='/auth' exact={true}
                 render={routerProps => (
-                  <div>Implement a page of resources</div>
+                  <Auth {...routerProps}
+                    onUser={this.handleUser} />
+                )}
+              />
+
+              <Route path="/todos" exact={true}
+                render={routerProps => (
+                  token
+                    ? <TodosPage {...routerProps} />
+                    : <Redirect to="/auth" />
                 )}
               />
 
               <Route path="/resources/:id"
                 render={routerProps => (
                   <div>Implement a page for id {routerProps.match.params.id}</div>
-                )}
-              />
-
-              <Route path='/auth' exact={true}
-                render={routerProps => (
-                  <div>Auth Page</div>
                 )}
               />
 
