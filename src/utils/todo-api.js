@@ -48,9 +48,9 @@ export async function getTodo() {
   return response.body;
 }
 
-export async function deleteTodo() {
+export async function deleteTodo(id) {
   const response = await request
-    .delete('/api/todos/:id')
+    .delete(`/api/todos/${id}`)
     .set('Authorization', window.localStorage.getItem('TOKEN'));
 
   return response.body;
