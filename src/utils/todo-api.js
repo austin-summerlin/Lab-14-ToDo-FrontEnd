@@ -60,7 +60,8 @@ export async function updateTodo(id) {
 
   const response = await request
     .put(`/api/todos/${id}/completed`)
-    .set('Authorization', window.localStorage.getItem('TOKEN'));
+    .set('Authorization', window.localStorage.getItem('TOKEN'))
+    .send({ completed: true });
 
   return response.body;
 

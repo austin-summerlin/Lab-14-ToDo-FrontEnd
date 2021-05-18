@@ -5,6 +5,7 @@ import './TodosPage.css';
 export default class TodosPage extends Component {
   state = {
     task: '',
+    completed: false,
     todos: []
   }
 
@@ -28,6 +29,7 @@ export default class TodosPage extends Component {
       this.setState({
         todos: updatedTodo,
         task: '',
+        completed: false
       });
     }
     catch (err) {
