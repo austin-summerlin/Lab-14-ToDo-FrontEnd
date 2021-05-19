@@ -67,3 +67,10 @@ i:hover {
   color: rgb(179 15 15);
   cursor: pointer;
 }
+
+.TodosPage a {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-top: 25px;
+}

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { addTodo, getTodo, deleteTodo, updateTodo } from '../utils/todo-api.js';
 import './TodosPage.css';
+import { NavLink } from 'react-router-dom';
 
 export default class TodosPage extends Component {
   state = {
@@ -90,6 +91,7 @@ export default class TodosPage extends Component {
             </li>
           ))}
         </ul>
+        <NavLink to="/auth" onClick={() => localStorage.clear('TOKEN')} >Log Out</NavLink>
       </div>
     );
   }
