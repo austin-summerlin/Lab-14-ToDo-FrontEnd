@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+
 import './Header.css';
 
 class Header extends Component {
@@ -8,9 +8,9 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <h1><NavLink to="/">Home</NavLink></h1>
+        <h1> To Do List</h1>
 
-        <NavLink to="/todos">Todos</NavLink>
+
 
       </header>
     );
